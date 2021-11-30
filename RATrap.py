@@ -124,7 +124,7 @@ def compareGenomes(A, B, chromDict, minD, tileSize, statsFlag, figExt):
 	if statsFlag:
 		fig.text(0.03, 0.5, "Chromosome", va='center', ha='center', rotation='vertical')
 		cb1 = matplotlib.colorbar.ColorbarBase(axes[-1], cmap=plt.get_cmap("RdBu"), norm=matplotlib.colors.Normalize(vmin=-distMax, vmax=distMax), orientation='horizontal')
-		plt.savefig("RAT Plot."+figExt)
+		plt.savefig("RAT_Plot."+figExt)
 
 def indexMean(BA):
 	if not np.any(BA):
