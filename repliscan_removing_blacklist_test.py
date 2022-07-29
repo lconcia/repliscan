@@ -125,8 +125,7 @@ Methods to handle replicates:
 	chromDict = readFAI(fai, args.window)
 	smooth(args.level, fList, chromDict, args.log)
 	gc.collect()
-        sys.exit()
-	#####################################################
+        #####################################################
 	# Perform Segmentation
 	#####################################################
 	makeGFF(fList, chromDict, args.level, args.window, args.plot, args.threshold, args.scope, args.log, args.value, args.prep, args.classifier, args.blacklist)
@@ -568,7 +567,8 @@ def makeBedgraph(fList, fasta, size, aggMethod, normMethod, removeWhat, plotCove
                         outfile.write(a)
                 outfile.close()
                 for time in times[1:] :
-                    os.system("bedtools subtract -a "+time+"_norm.bedgraph -b "+times[0]+"_norm_blacklist.bedgraph > "+time+"_sub.blacklist.bedgraph")
+                    os.system("mv "+time+"_norm.bedgraph "+time+"_without_sub.blacklist.bedgraph")
+		    os.system("bedtools subtract -a "+time+"_norm.bedgraph -b "+times[0]+"_norm_blacklist.bedgraph > "+time+"_sub.blacklist.bedgraph")
                     os.system("mv "+time+"_sub.blacklist.bedgraph "+time+"_norm.bedgraph")
         return (L, normVals)
 
