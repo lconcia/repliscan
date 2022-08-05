@@ -567,9 +567,9 @@ def makeBedgraph(fList, fasta, size, aggMethod, normMethod, removeWhat, plotCove
                         outfile.write(a)
                 outfile.close()
                 for time in times[1:] :
-                    os.system("cp "+time+"_norm.bedgraph "+time+"_without_sub.blacklist.bedgraph")
-		    os.system("bedtools subtract -a "+time+"_norm.bedgraph -b "+times[0]+"_norm_blacklist.bedgraph > "+time+"_sub.blacklist.bedgraph")
-                    os.system("cp "+time+"_sub.blacklist.bedgraph "+time+"_norm.bedgraph")
+                    os.system("cp "+time+"_norm.bedgraph "+time+"_norm_before_sub.blacklist.bedgraph")
+		    os.system("bedtools subtract -a "+time+"_norm.bedgraph -b "+times[0]+"_norm_blacklist.bedgraph > "+time+"_norm_sub.blacklist.bedgraph")
+                    os.system("cp "+time+"_norm_sub.blacklist.bedgraph "+time+"_norm.bedgraph")
         return (L, normVals)
 
 def writeVals(L, vals, files):
